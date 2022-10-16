@@ -38,4 +38,6 @@ services:
     command: npm start
     stdin_open: true
     volumes:
+       - /app/node_modules
        - ./frontend:/app
+
