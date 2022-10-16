@@ -13,6 +13,7 @@ function App() {
   const [urlInput, setUrlInput] = useState("");
   const [shortLink, setShortLink] = useState("");
   const [urlError, setUrlError] = useState("");
+  const [urlCopied, setUrlcopied] = useState("");
 
   // api call to get shortened link
   const submitData = async () => {
@@ -31,15 +32,12 @@ function App() {
   };
 
   const copyLink = () => {
-
     navigator.clipboard
       .writeText(shortLink)
       .then(() => {
-        alert("successfully copied");
+        setUrlcopied("Copied to clipboard")
+        // alert("successfully copied");
       })
-      .catch(() => {
-        alert("something went wrong");
-      });
   }
 
   return (
@@ -51,19 +49,19 @@ function App() {
             <h1>URL Shortener</h1>
             <Stack spacing={4} direction="column" alignItems="center">
               <form id="urlForm">
-              <TextField
-                fullWidth
-                size="small"
-                id="urlEntry"
-                placeholder="https://www.example.com"
-                // label="URL to shorten"
-                variant="outlined"
-                // helperText="url"
-                value={urlInput}
-                onChange={(e) => {
-                  setUrlInput(e.target.value);
-                }}
-              />
+                <TextField
+                  fullWidth
+                  size="small"
+                  id="urlEntry"
+                  placeholder="https://www.example.com"
+                  // label="URL to shorten"
+                  variant="outlined"
+                  // helperText="url"
+                  value={urlInput}
+                  onChange={(e) => {
+                    setUrlInput(e.target.value);
+                  }}
+                />
               </form>
               {urlError}
               <Button
@@ -84,16 +82,17 @@ function App() {
                 value={shortLink}
                 variant="filled"
                 // defaultValue=""
-                sx={{ input: { color: 'white' }}}
+                sx={{ input: { color: 'white' } }}
                 InputProps={{
                   readOnly: true,
                 }}
               />
 
+              {urlCopied}
               <Button startIcon={<ContentCopyIcon />}
                 variant="contained"
                 onClick={() => {
-                  copyLink(); 
+                  copyLink();
                 }}>copy</Button>
             </Stack>
           </Grid>
