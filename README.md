@@ -19,7 +19,8 @@ see here for [API Documentation](API.md)
 Ensure that Docker is installed in your OS: https://docs.docker.com/get-docker/
 
 ## To start
-Clone the git repository: `git clone
+Clone the git repository: `git clone https://github.com/raywtham/url-shortener.git`
+
 RUN in terminal: `docker compose up`
 
 ## To use
