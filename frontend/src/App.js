@@ -50,7 +50,7 @@ function App() {
           <Grid item container xs={8} direction="column" display="flex" alignItems="center" >
             <h1>URL Shortener</h1>
             <Stack spacing={4} direction="column" alignItems="center">
-
+              <form id="urlForm">
               <TextField
                 fullWidth
                 size="small"
@@ -64,11 +64,15 @@ function App() {
                   setUrlInput(e.target.value);
                 }}
               />
+              </form>
               {urlError}
               <Button
+                type="submit"
+                form="urlForm"
                 color="success"
                 variant="contained"
-                onClick={() => {
+                onClick={(e) => {
+                  e.preventDefault()
                   submitData();
                 }}
               >shorten</Button>
